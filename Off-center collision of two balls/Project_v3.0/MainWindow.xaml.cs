@@ -35,9 +35,14 @@ namespace Project_v3._0
 
         public static Chart Chart_1 = new Chart();
         public static Chart Chart_2 = new Chart();
+        public static Chart Chart_3 = new Chart();
+        public static Chart Chart_4 = new Chart();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            
 
             textbox_point_chart.Text = StaticResources.ChartPointsMax.ToString();
 
@@ -85,8 +90,11 @@ namespace Project_v3._0
             slider_dt.Value = StaticResources.DefaultDt * 1000;
 
 
-            ChartInstruments.setChart("Импульс", "dt", Chart_1, "Pdt");
-            ChartInstruments.setChart("Энергия", "dt", Chart_2, "Edt");
+            ChartInstruments.setChart("Импульс", "Время", Chart_1, "Pdt");
+            ChartInstruments.setChart("Сумма импульсов", "Время", Chart_2, "Edt");
+            ChartInstruments.setChart("Скорость", "Время", Chart_3, "Vdt");
+            ChartInstruments.setChart("Энергия", "Время", Chart_4, "Edt");
+
 
 
 
@@ -99,6 +107,17 @@ namespace Project_v3._0
             hosts2.Child = Chart_2;
             Data.gridChart_2.Children.Clear();
             Data.gridChart_2.Children.Add(hosts2);
+            
+            System.Windows.Forms.Integration.WindowsFormsHost hosts3 = new System.Windows.Forms.Integration.WindowsFormsHost();
+            hosts3.Child = Chart_3;
+            Data.gridChart_3.Children.Clear();
+            Data.gridChart_3.Children.Add(hosts3);
+            
+            System.Windows.Forms.Integration.WindowsFormsHost hosts4 = new System.Windows.Forms.Integration.WindowsFormsHost();
+            hosts4.Child = Chart_4;
+            Data.gridChart_4.Children.Clear();
+            Data.gridChart_4.Children.Add(hosts4);
+
 
 
 
@@ -178,9 +197,6 @@ namespace Project_v3._0
         {
         }
 
-
-
-
         //Фильтры
         private void inp_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -188,16 +204,6 @@ namespace Project_v3._0
         private void inp_dt_TextChanged(object sender, TextChangedEventArgs e)
         {
         }
-
-
-
-
-
-
-
-
-
-
         public Data GetDataFromInputs()
         {
             // Проверка на данные
@@ -210,6 +216,8 @@ namespace Project_v3._0
             Data.grid = grid;
             Data.gridChart_1 = gridChart_1;
             Data.gridChart_2 = gridChart_2;
+            Data.gridChart_3 = gridChart_3;
+            Data.gridChart_4 = gridChart_4;
             Data.this_ = this;
             Data.lastData = data;
 
@@ -240,12 +248,9 @@ namespace Project_v3._0
         {
             Console.WriteLine("SetDataFromInputs");
             data.Print();
+            textbox_cy1.Text = data.BallFirst.Position.y.ToString();
+            textbox_vy1.Text = data.BallFirst.Speed.PointVector.y.ToString();
 
-     /*       if (MainWindow.location_system == LOCATION_SYSTEM.STRAIGHT)
-            {*/
-                textbox_cy1.Text = data.BallFirst.Position.y.ToString();
-                textbox_vy1.Text = data.BallFirst.Speed.PointVector.y.ToString();
-           /* }*/
           
 
 

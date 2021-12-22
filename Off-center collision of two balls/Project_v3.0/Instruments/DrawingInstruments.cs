@@ -95,9 +95,7 @@ namespace Project_v3._0
             LastDataList = DataList;
 
             CheckIntersection(LastDataList.Last<Data>());
-
             System.Drawing.Graphics graphics = GetField();
-            Console.WriteLine($"\t Display {DataList.Last<Data>().BallFirst.Position.y} {DataList.Last<Data>().BallFirst.Speed.PointVector.y}");
 
             switch (MainWindow.mode)
             {
@@ -191,7 +189,6 @@ namespace Project_v3._0
 
                 sketch = GetSketch(TMP);
                 DrawSketch(graphics,sketch);
-                Console.WriteLine($"DrawVector{Events.MM_VectorPoint_XY.x} {Events.MM_VectorPoint_XY.y}");
                 if (i==0 && vector && clicked_vector == CLICKED_FOR_VECTOR_SETUP_BALL.BALL1)
                 {
                     DrawVector(graphics, TMP,phantomPoint:Events.MM_VectorPoint_XY);

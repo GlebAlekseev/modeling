@@ -42,7 +42,6 @@ namespace Project_v3._0
         public static void MouseMove_Selecting_Vector(object sender, System.Windows.Forms.MouseEventArgs e) {
             if (MM_VectorPoint_XY == new Point(e.X, e.Y))
                 return;
-            Console.WriteLine($"MouseMove_Selecting_Vector {MM_VectorPoint_XY.x} {MM_VectorPoint_XY.y}");
             switch (MainWindow.location_system)
             {
 /*                case LOCATION_SYSTEM.STRAIGHT:
@@ -66,7 +65,6 @@ namespace Project_v3._0
             DrawingInstruments.RefreshLastDisplay();
         }
         public static void MouseClick_EnterVector(object sender, System.Windows.Forms.MouseEventArgs e) {
-            Console.WriteLine("MouseClick_ChoosePosition");
             switch (MainWindow.clicked_vector_setup_ball)
             {
                 case CLICKED_FOR_VECTOR_SETUP_BALL.BALL1:
@@ -100,7 +98,6 @@ namespace Project_v3._0
             DrawingInstruments.RefreshLastDisplay();
         }
         public static void MouseLeave_Cancel_VectorSelecting(object sender, EventArgs e) {
-            Console.WriteLine("MouseLeave_Cancel_VectorSelecting");
             // Отмена ивентов и выход из режима
             LifeCycle.OnRemoveVectorSetupMode();
             LifeCycle.OnCreateInputMode();
@@ -121,7 +118,6 @@ namespace Project_v3._0
             }
         }
         public static void MouseLeave_Cancel(object sender, EventArgs e) {
-            Console.WriteLine("MouseLeave_Cancel");
             // Отмена ивентов и выход из режима
             LifeCycle.OnRemoveMovementMode();
             LifeCycle.OnCreateInputMode();
@@ -129,8 +125,6 @@ namespace Project_v3._0
         }
         
         public static void MouseClick_ChoosePosition(object sender, System.Windows.Forms.MouseEventArgs e) {
-            Console.WriteLine("MouseClick_ChoosePosition");
-            Console.WriteLine($" MouseClick_ChoosePosition {{{e.X} {e.Y}");
             switch (MainWindow.clicked_ball)
             {
                 case CLICKED_BALL.BALL1:
@@ -153,7 +147,6 @@ namespace Project_v3._0
                     }
                     break;
                 case CLICKED_BALL.BALL2:
-                    Console.WriteLine($" BALL2 {{{e.X} {e.Y}");
                     DrawingInstruments.LastDataList.Last<Data>().BallSecond.Position = new Point(e.X, e.Y);
                     Data.this_.SetDataFromInputs(DrawingInstruments.LastDataList.Last<Data>());
                     break;
@@ -191,12 +184,10 @@ namespace Project_v3._0
         }
         public static void MouseClick_ChooseBall(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            Console.WriteLine("MouseClick_ChooseBall");
 
             if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
                 // Обработка вектора
-                Console.WriteLine("Изменеие вектора");
                 if (Physics.isPointInBall(new Point(e.X, e.Y), Data.lastData.BallFirst.Position, Data.lastData.BallFirst.Radius))
                 {
                     LifeCycle.OnRemoveInputMode();
@@ -235,8 +226,6 @@ namespace Project_v3._0
                 return;
             
             MM_Selecting_XY = new Point(e.X,e.Y);
-            Console.WriteLine($"MouseMove_Selecting {MM_Selecting_XY.x} {MM_Selecting_XY.y}");
-            /*            Console.WriteLine($"MouseMove_Selecting {e.X} {e.Y} { MainWindow.selection_ball}");*/
             if (Physics.isPointInBall(MM_Selecting_XY, Data.lastData.BallFirst.Position, Data.lastData.BallFirst.Radius))
             {
                 MainWindow.selection_ball = SELECTION_BALL.BALL1;

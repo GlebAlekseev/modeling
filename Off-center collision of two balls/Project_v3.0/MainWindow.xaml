@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_v3._0"
         mc:Ignorable="d"
-        Title="MainWindow" Height="687.473" Width="840.845">
+        Title="Нецентральный удар двух скользких шаров произвольных масс и размеров" Height="687.473" Width="840.845">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -43,11 +43,17 @@
         <Button x:Name="resumeBtn" Content="Продолжить" HorizontalAlignment="Left" Margin="115,40,0,0" VerticalAlignment="Top" Width="95" Click="resumeBtn_Click" Height="25" BorderBrush="{x:Null}"/>
         <Border BorderThickness="1" HorizontalAlignment="Left" Height="162" Margin="10,75,0,0" VerticalAlignment="Top" Width="200" Background="#FFE5E5E5" d:IsHidden="True"/>
         <TabControl HorizontalAlignment="Left" Height="218" Margin="222,420,0,0" VerticalAlignment="Top" Width="594">
-            <TabItem Header="Импульс">
+            <TabItem Header="Импульс" Width="90" Height="20">
                 <Grid x:Name="gridChart_1" Background="#FFE5E5E5" Margin="0"/>
             </TabItem>
-            <TabItem Header="Энергия" Margin="-2,-2,-2,0">
+            <TabItem Header="Сохранение импульса" Margin="-2,-2,-2,0" Width="140" Height="20">
                 <Grid x:Name="gridChart_2" Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Скорость" Height="20" Width="100">
+                <Grid x:Name="gridChart_3" Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Энергия" Height="20" Width="100">
+                <Grid x:Name="gridChart_4" Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
         <Border BorderThickness="1" HorizontalAlignment="Left" Height="160" Margin="10,250,0,0" VerticalAlignment="Top" Width="200" Background="#FFE5E5E5"/>
@@ -95,6 +101,7 @@
         <Label Content="Точек на графике:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="11" Height="25" Margin="25,515,0,0" Padding="5,4,5,5"/>
         <TextBox x:Name="textbox_dt" Height="25" Text="0" Width="175" FontSize="11" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="25,455,0,0" Padding="40,-1,12,0" TextAlignment="Right"/>
         <Label Content="Шаг dt:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="11" Height="25" Margin="25,455,0,0" Padding="5,4,5,5"/>
+        <TextBlock x:Name="textBlockItersection_Copy" HorizontalAlignment="Left" Margin="379,14,0,0" TextWrapping="Wrap" Text="Перемещение шара: ЛКМ   Изменение вектора скорости: Ctrl + ЛКМ" VerticalAlignment="Top" Height="25" Width="437" LineHeight="6" Padding="25,5,0,0"/>
 
     </Grid>
 </Window>

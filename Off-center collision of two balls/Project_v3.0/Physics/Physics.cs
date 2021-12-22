@@ -14,6 +14,7 @@ namespace Project_v3._0
         {
             return (i * v2) * i + ((m2 - m1) * (n * v2) * n + 2 * m1 * (n * v1) * n) / (m1 + m2);
         }
+        
         public static double Getdt1(Vector v21, Vector r21, double R1, double R2)
         {
             double z = (v21 * r21);
@@ -23,7 +24,7 @@ namespace Project_v3._0
             }
             return Math.Abs((r21.Module - R1 - R2) * r21.Module / z);
         }
-
+         
         public static bool isOutside(Data data)
         {
             Point BorderDown = new Point(0,0);
@@ -62,13 +63,15 @@ namespace Project_v3._0
             Vector v2_ = LastData.BallSecond.Speed;
             Point c1 = LastData.BallFirst.Position;
             Point c2 = LastData.BallSecond.Position;
+
+
             Vector v21_ = v2_ - v1_;
             Vector r21 = new Vector(c1, c2);
-
             double v21_pr = Math.Abs((v21_ * r21) / r21.Module);
-
             if (r21 * v21_ < 0 && (v21_pr * StaticResources.Dt > (r21.Module - R1 - R2)))
             {
+
+
                 double dt1 = Getdt1(v21_, r21, R1, R2);
                 if (dt1 > StaticResources.Dt)
                     throw new Exception("Проблема алгоритма (dt1 > StaticResources.Dt)");
@@ -85,7 +88,6 @@ namespace Project_v3._0
                 Vector n = Vector.GetUnitVectorN(new Point(x1_, y1_), new Point(x2_, y2_), R1, R2);
                 // Единичный вектор - i     (-ny,nx)
                 Vector i = Vector.GetUnitVectorI(new Point(x1_, y1_), new Point(x2_, y2_), R1, R2);
-
                 // Скорость после удара
                 Vector v1 = Physics.GetNewSpeedV1(v1_, v2_, i, n, m1, m2);
                 Vector v2 = Physics.GetNewSpeedV2(v1_, v2_, i, n, m1, m2);
@@ -121,6 +123,7 @@ namespace Project_v3._0
             }
             else
             {
+/*                Console.WriteLine($"v1_={ LastData.BallFirst.Speed.Module} and v2={ LastData.BallSecond.Speed.Module}");*/
                 Data newData = new Data();
                 newData.BallFirst = new Ball();
                 newData.BallSecond = new Ball();
@@ -198,7 +201,7 @@ namespace Project_v3._0
             
             if (new Vector(Q) * NV < 0)
             {
-                Vector VX = new Vector(Q) + 1000 * NV;
+                Vector VX = new Vector(Q) + Data.Width * NV;
                 Point X = VX.PointVector;
 
                 double dx = X.x - Q.x;

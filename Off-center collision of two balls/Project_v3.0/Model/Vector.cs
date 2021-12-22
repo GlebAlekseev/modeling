@@ -49,7 +49,6 @@ namespace Project_v3._0
         public static Vector GetUnitVectorN(Point p1, Point p2, double R1, double R2)
         {
             double sumR = (R1 + R2);
-
             double x = (p2.x - p1.x) / sumR;
             double y = (p2.y - p1.y) / sumR;
             return new Vector(new Point(x, y));

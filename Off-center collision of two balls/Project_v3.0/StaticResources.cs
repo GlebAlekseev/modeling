@@ -16,7 +16,7 @@
         public static int BallMaxMass { get; } = 100;
         public static int BallMinRadius { get; } = 10;
         public static int BallMaxRadius { get; } = 25;
-        public static Point BallMinPosition { get; set; } = new Point(1, 1);
+        public static Point BallMinPosition { get; set; } = new Point(50, 50);
         public static Point BallMinSpeed { get; set; } = new Point(-150, -150);
         public static Point BallMaxSpeed { get; set; } = new Point(150, 150);
 

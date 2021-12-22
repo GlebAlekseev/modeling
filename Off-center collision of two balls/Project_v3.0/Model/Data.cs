@@ -38,6 +38,8 @@ namespace Project_v3._0
         public static Grid grid { get; set; }
         public static Grid gridChart_1 { get; set; }
         public static Grid gridChart_2 { get; set; }
+        public static Grid gridChart_3 { get; set; }
+        public static Grid gridChart_4 { get; set; }
         public static MainWindow this_ { get; set; }
         public static Data lastData { get; set; }
 
@@ -83,9 +85,14 @@ namespace Project_v3._0
                 }
                 randomData.BallFirst = ball_1;
                 randomData.BallSecond = ball_2;
+
                 if (new Vector(ball_2.Position,ball_1.Position).Module < (Width*2/3+ball_1.Radius+ball_2.Radius) && new Vector(ball_2.Position, ball_1.Position).Module > (Width * 1 / 3 +ball_1.Radius + ball_2.Radius))
-                    if (Physics.IsIntersection(randomData))
-                        break;
+                    if (!Physics.isOutside(randomData))
+                    {
+                        if (Physics.IsIntersection(randomData))
+                            break;
+                    }
+
             }
             return randomData;
         }
